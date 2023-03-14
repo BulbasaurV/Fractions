@@ -1,0 +1,73 @@
+#include <iostream>
+using namespace std;
+
+
+void menu();
+void addFractions(int&, int&, int, int, int, int);
+void subtractFractions(int&, int&, int, int, int, int);
+void multiplyFractions(int&, int&, int, int, int, int);
+void divideFractions(int&, int&, int, int, int, int);
+
+
+int main() {
+    int numCalculations = 0;
+    while (numCalculations < 4) {
+        menu();
+        numCalculations++;
+    }
+    return 0;
+}
+
+
+void menu() {
+    int choice, a1, b1, a2, b2, resultA, resultB;
+    cout << "Fraction Calculator" << endl;
+    cout << "Enter 1 to add fractions, 2 to subtract fractions, 3 to multiply fractions, and 4 to divide fractions.";     cin >> choice;
+    cout << "Enter the numerator and denominator of the first fraction: ";     cin >> a1 >> b1;
+    cout << "Enter the numerator and denominator of the second fraction: ";    cin >> a2 >> b2;
+    switch(choice) {
+        case 1:
+            addFractions(resultA, resultB, a1, b1, a2, b2);
+            cout << a1 << "/" << b1 << " + " << a2 << "/" << b2 << " = " << resultA << "/" << resultB << endl;
+            break;
+        case 2:
+            subtractFractions(resultA, resultB, a1, b1, a2, b2);
+            cout << a1 << "/" << b1 << " - " << a2 << "/" << b2 << " = " << resultA << "/" << resultB << endl;
+            break;
+        case 3:
+            multiplyFractions(resultA, resultB, a1, b1, a2, b2);
+            cout << a1 << "/" << b1 << " * " << a2 << "/" << b2 << " = " << resultA << "/" << resultB << endl;
+            break;
+        case 4:
+            divideFractions(resultA, resultB, a1, b1, a2, b2);
+            cout << a1 << "/" << b1 << " / " << a2 << "/" << b2 << " = " << resultA << "/" << resultB << endl;
+            break;
+        default:
+            cout << "Invalid choice." << endl;
+            break;
+    }
+}
+
+
+void addFractions(int& resultA, int& resultB, int a1, int b1, int a2, int b2) {
+    resultA = (a1*b2) + (a2*b1);
+    resultB = b1*b2;
+}
+
+
+void subtractFractions(int& resultA, int& resultB, int a1, int b1, int a2, int b2) {
+    resultA = (a1*b2) - (a2*b1);
+    resultB = b1*b2;
+}
+
+
+void multiplyFractions(int& resultA, int& resultB, int a1, int b1, int a2, int b2) {
+  resultA = a1 * a2;
+  resultB = b1 * b2;
+}
+
+
+void divideFractions(int& resultA, int& resultB, int a1, int b1, int a2, int b2) {
+  resultA = a1 * b2;
+  resultB = b1 * a2;
+}
